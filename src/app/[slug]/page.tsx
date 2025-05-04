@@ -6,7 +6,7 @@ import {
   getSlugs,
   ProjectFrontmatter,
 } from "@/helpers/frontmatter.helper";
-import { Suspense } from "react";
+import { createRef, RefObject, Suspense } from "react";
 import Contents from "@/components/Contents";
 import { compilePageMdx } from "@/helpers/mdx.helper";
 import { Metadata } from "next";
@@ -92,6 +92,7 @@ export default async function Project({
 }: {
   params: Promise<{ slug: string }>;
 }) {
+  let scrollBox: RefObject<HTMLDivElement> = createRef();
   let { slug } = await params;
   let contentStr: string;
   try {

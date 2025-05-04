@@ -1,6 +1,6 @@
 "use client";
 
-import { Ref, useEffect, useRef, useState } from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 import ContentsEntry from "./ContentsEntry";
 import { useMotionValue, useMotionValueEvent, useScroll } from "framer-motion";
 
@@ -13,6 +13,7 @@ type Props = {
     numbering: number[];
     parent: string;
   }[];
+  scrollContainer: RefObject<HTMLDivElement>;
 };
 
 function Contents(props: Props) {
@@ -21,7 +22,7 @@ function Contents(props: Props) {
   const [ranges, setRanges] = useState<number[]>([]);
   const [headings, setHeadings] = useState<string[]>([]);
 
-  const { scrollY } = useScroll();
+  const { scrollY } = useScroll({ container: props.scrollContainer });
   useEffect(() => {
     let lrange: number[] = [];
     let lhead: string[] = [];
