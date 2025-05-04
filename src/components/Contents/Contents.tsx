@@ -13,7 +13,7 @@ type Props = {
     numbering: number[];
     parent: string;
   }[];
-  scrollContainer: RefObject<HTMLDivElement>;
+  // scrollContainer: RefObject<HTMLDivElement>;
 };
 
 function Contents(props: Props) {
@@ -22,7 +22,7 @@ function Contents(props: Props) {
   const [ranges, setRanges] = useState<number[]>([]);
   const [headings, setHeadings] = useState<string[]>([]);
 
-  const { scrollY } = useScroll({ container: props.scrollContainer });
+  const { scrollY } = useScroll({});
   useEffect(() => {
     let lrange: number[] = [];
     let lhead: string[] = [];
